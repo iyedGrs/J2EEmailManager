@@ -82,19 +82,34 @@
         </tr>
         </thead>
         <tbody>
+        <!-- Check if the emails list is empty -->
+        <c:if test="${empty emails}">
+            <tr>
+                <td colspan="2" class="text-center">No emails in the database.</td>
+            </tr>
+        </c:if>
         <!-- JSTL Loop to Display Emails -->
         <c:forEach var="email" items="${emails}">
             <tr>
                 <td>${email}</td> <!-- Displaying Email -->
                 <td>
                     <!-- Edit and Delete Actions -->
-                    <button onclick="window.location.href='email?action=edit&email=${email}'">Edit</button>
-                    <button onclick="window.location.href='email?action=delete&email=${email}'">Delete</button>
+                    <button onclick="window.location.href='email?action=edit&email=${email}'" class="btn btn-success">Edit</button>
+                    <button onclick="return confirmDelete('${email}')" class="btn btn-danger">Delete</button> <!-- Added confirmation -->
                 </td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
+
+    <script>
+        function confirmDelete(email) {
+            if (confirm("Are you sure you want to delete this email?")) {
+                window.location.href = 'email?action=delete&email=' + email;
+            }
+            return false;  // Prevent the default action of the link
+        }
+    </script>
 
     <!-- Back Button -->
     <a href="index.jsp" class="back-btn">Back to Home</a>

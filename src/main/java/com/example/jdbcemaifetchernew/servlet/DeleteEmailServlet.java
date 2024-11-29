@@ -9,17 +9,20 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class DeleteEmailServlet extends HttpServlet {
+
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id=Integer.parseInt(req.getParameter("id"));
-        try(Connection conn= DBUTIL.getConnection();
-            PreparedStatement ps=conn.prepareStatement("delete from emails where id=?")){
-            ps.setInt(1,id);
-            ps.executeUpdate();
-            resp.sendRedirect("welcome");
-        }catch(Exception e){
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String email = req.getParameter("email");
+
+        try (Connection conn = DBUTIL.getConnection()) {
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM emails WHERE email = ?");
+            stmt.setString(1, email);
+            stmt.executeUpdate();
+            resp.sendRedirect("email?action=view");
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
