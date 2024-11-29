@@ -4,35 +4,12 @@
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
          version="6.0">
     <servlet>
-        <servlet-name>WelcomeServlet</servlet-name>
-        <servlet-class>com.example.jdbcemaifetchernew.servlet.WelcomeServlet</servlet-class>
+        <servlet-name>EmailServlet</servlet-name>
+        <servlet-class>com.example.jdbcemaifetchernew.servlet.EmailServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>WelcomeServlet</servlet-name>
-        <url-pattern>/welcome</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>AddEmailServlet</servlet-name>
-        <servlet-class>com.example.jdbcemaifetchernew.servlet.AddEmailServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>AddEmailServlet</servlet-name>
-        <url-pattern>/addEmail</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>ModifyEmailServlet</servlet-name>
-        <servlet-class>com.example.jdbcemaifetchernew.servlet.ModifyEmailServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ModifyEmailServlet</servlet-name>
-        <url-pattern>/modifyEmail</url-pattern>
-    </servlet-mapping><servlet>
-        <servlet-name>DeleteEmailServlet</servlet-name>
-        <servlet-class>com.example.jdbcemaifetchernew.servlet.DeleteEmailServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>DeleteEmailServlet</servlet-name>
-        <url-pattern>/deleteEmail</url-pattern>
+        <servlet-name>EmailServlet</servlet-name>
+        <url-pattern>/email</url-pattern>
     </servlet-mapping>
 
 
